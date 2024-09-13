@@ -112,7 +112,7 @@ $html = '
                     $html .= '<td>' .$depense->ToDay().'</td>';
                     $html .= '<td>' .$versement->ToDay().'</td>';
                     $html .= '<td>' .(-1*$caise->ToDay()).'</td>';
-                    $html .= '<td>' .((((($vente->getSommeCash())-0)-$vente->getSommeReduction())-$vente->getSommeOm())+$caise->ToDay()).'</td>';
+                    $html .= '<td>' .((((($vente->getSommeCash())-0)-$vente->getSommeReduction())-0)+$caise->ToDay()).'</td>';
                 $html .= '</tr>';
         $html .= '
         </tbody>
@@ -147,22 +147,26 @@ $html = '
 
     $html .='<br><br><br> <table style="width:100%">
         <thead>';
-        $html .=' <tr><th colspan="3" align="center""> Quantite Pour chaque produit : '.date("d-m-Y").'</th></tr>
+        $html .=' <tr><th colspan="5" align="center""> Quantite Pour chaque produit : '.date("d-m-Y").'</th></tr>
         </thead>
         <tbody>';
             $html .= '<tr>';
-            $html .= '<td colspan="3" align="center"> Recapitulatif Quantite Vendue </td>';
+            $html .= '<td colspan="5" align="center"> Recapitulatif Quantite Vendue </td>';
             $html .= '</tr>
                 <tr>
                 <th scope="col">Mon du produit </th>
+                <th scope="col">Quantite debut</th>
                 <th scope="col">Quantite</th>
+                <th scope="col">Quantite fin</th>
                 <th scope="col">Date</th>
             </tr>';
             $quantiteproduit = $vente->getSommeProduit();
             foreach ($quantiteproduit as $key ) {
                 $html .= '<tr>';
                 $html .= '<td>' .$key["nomproduit"].'</td>';
+                $html .= '<td>' ."0".'</td>';
                 $html .= '<td>' .$key["quantite"].'</td>';
+                $html .= '<td>' ."0".'</td>';
                 $html .= '<td>' .$key["datefacture"].'</td>';
             $html .= '</tr>';
             }   
